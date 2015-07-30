@@ -2,8 +2,8 @@ options( digits = 16 )
 library( jsonlite )
 
 
-p = 0.5
-x = c( -5, -2.5, 0, 2.5, 5 )
+p = 0.43
+x = c( -2, 0, 2.5, 5 )
 y = dgeom( x, p )
 
 cat( y, sep = ",\n" )
