@@ -381,7 +381,7 @@ Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
 [travis-image]: http://img.shields.io/travis/distributions-io/geometric-pmf/master.svg
 [travis-url]: https://travis-ci.org/distributions-io/geometric-pmf
 
-[codecov-image]: https://img.shields.io/codecov/github/distributions-io/geometric-pmf/master.svg
+[codecov-image]: https://img.shields.io/codecov/c/github/distributions-io/geometric-pmf/master.svg
 [codecov-url]: https://codecov.io/github/distributions-io/geometric-pmf?branch=master
 
 [dependencies-image]: http://img.shields.io/david/distributions-io/geometric-pmf.svg
