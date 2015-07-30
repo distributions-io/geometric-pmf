@@ -10,7 +10,7 @@ var // Expectation library:
 	isFiniteNumber = require( 'validate.io-finite' ),
 
 	// Module to be tested:
-	pdf = require( './../lib/typedarray.js' );
+	pmf = require( './../lib/typedarray.js' );
 
 
 // VARIABLES //
@@ -21,21 +21,21 @@ var expect = chai.expect,
 
 // TESTS //
 
-describe( 'typed-array pdf', function tests() {
+describe( 'typed-array pmf', function tests() {
 	var validationData = require( './fixtures/typedarray.json' ),
 		p = validationData.p;
 
 	it( 'should export a function', function test() {
-		expect( pdf ).to.be.a( 'function' );
+		expect( pmf ).to.be.a( 'function' );
 	});
 
-	it( 'should evaluate the Geometric pdf', function test() {
+	it( 'should evaluate the Geometric pmf', function test() {
 		var data, actual, expected, i;
 
 		data = new Float64Array( validationData.data );
 		actual = new Float64Array( data.length );
 
-		actual = pdf( actual, data, p );
+		actual = pmf( actual, data, p );
 
 		expected = new Float64Array( validationData.expected.map( function( d ) {
 			return d === 'Inf' ? Infinity : d;
@@ -49,7 +49,7 @@ describe( 'typed-array pdf', function tests() {
 	});
 
 	it( 'should return an empty array if provided an empty array', function test() {
-		assert.deepEqual( pdf( new Int8Array(), new Int8Array(), p ), new Int8Array() );
+		assert.deepEqual( pmf( new Int8Array(), new Int8Array(), p ), new Int8Array() );
 	});
 
 });

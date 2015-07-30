@@ -10,7 +10,7 @@ var // Expectation library:
 	isFiniteNumber = require( 'validate.io-finite' ),
 
 	// Check whether an element is `NaN`
-	isnan = require( 'validate.io-nan' ),	
+	isnan = require( 'validate.io-nan' ),
 
 	// Module to be tested:
 	partial = require( './../lib/partial.js' );
@@ -24,7 +24,7 @@ var expect = chai.expect,
 
 // TESTS //
 
-describe( 'partial pdf', function tests() {
+describe( 'partial pmf', function tests() {
 
 	var	validationData = require( './fixtures/partial.json' ),
 		data = validationData.data,
@@ -37,17 +37,17 @@ describe( 'partial pdf', function tests() {
 		expect( partial ).to.be.a( 'function' );
 	});
 
-	it( 'should partially apply the Geometric pdf for given parameter values', function test() {
-		var pdf;
-		pdf = partial( p );
-		expect( pdf ).to.be.a( 'function' );
+	it( 'should partially apply the Geometric pmf for given parameter values', function test() {
+		var pmf;
+		pmf = partial( p );
+		expect( pmf ).to.be.a( 'function' );
 	});
 
-	it( 'should return a function which evaluates the probability density function', function test() {
-		var pdf, actual;
-		pdf = partial(  p );
+	it( 'should return a function which evaluates the probability mass function', function test() {
+		var pmf, actual;
+		pmf = partial(  p );
 		for ( var i = 0; i < data.length; i++ ) {
-			actual = pdf( data[ i ] );
+			actual = pmf( data[ i ] );
 			if ( isFiniteNumber( actual ) && isFiniteNumber( expected[ i ] ) ) {
 				assert.closeTo( actual, expected[ i ] , 1e-14 );
 			}
@@ -55,8 +55,8 @@ describe( 'partial pdf', function tests() {
 	});
 
 	it( 'should return `NaN` if provided `NaN` as input', function test() {
-		var pdf = partial(  p );
-		assert.isTrue( isnan( pdf( NaN ) ) );
+		var pmf = partial(  p );
+		assert.isTrue( isnan( pmf( NaN ) ) );
 	});
 
 });

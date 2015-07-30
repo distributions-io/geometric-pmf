@@ -10,7 +10,7 @@ var // Expectation library:
 	isFiniteNumber = require( 'validate.io-finite' ),
 
 	// Module to be tested:
-	pdf = require( './../lib/deepset.js' );
+	pmf = require( './../lib/deepset.js' );
 
 
 // VARIABLES //
@@ -21,23 +21,23 @@ var expect = chai.expect,
 
 // TESTS //
 
-describe( 'deepset pdf', function tests() {
+describe( 'deepset pmf', function tests() {
 
 	var validationData = require( './fixtures/deepset.json' ),
 		p = validationData.p;
 
 	it( 'should export a function', function test() {
-		expect( pdf ).to.be.a( 'function' );
+		expect( pmf ).to.be.a( 'function' );
 	});
 
-	it( 'should compute the Geometric pdf and deep set', function test() {
+	it( 'should compute the Geometric pmf and deep set', function test() {
 		var data, expected, i;
 
 		data = validationData.data.map( function( e ) {
 			return {'x': e};
 		});
 
-		data = pdf( data, p, 'x' );
+		data = pmf( data, p, 'x' );
 
 		expected = validationData.expected
 			.map( function( d ) {
@@ -58,7 +58,7 @@ describe( 'deepset pdf', function tests() {
 			return {'x': [9, e]};
 		});
 
-		data = pdf( data, p, 'x/1', '/' );
+		data = pmf( data, p, 'x/1', '/' );
 		expected = validationData.expected
 			.map( function( d ) {
 				return d === 'Inf' ? Infinity : d;
@@ -75,8 +75,8 @@ describe( 'deepset pdf', function tests() {
 	});
 
 	it( 'should return an empty array if provided an empty array', function test() {
-		assert.deepEqual( pdf( [], p, 'x' ), [] );
-		assert.deepEqual( pdf( [], p, 'x', '/' ), [] );
+		assert.deepEqual( pmf( [], p, 'x' ), [] );
+		assert.deepEqual( pmf( [], p, 'x', '/' ), [] );
 	});
 
 	it( 'should handle non-numeric values by setting the element to NaN', function test() {
@@ -88,7 +88,7 @@ describe( 'deepset pdf', function tests() {
 			{'x':[]},
 			{'x':{}}
 		];
-		actual = pdf( data, p, 'x' );
+		actual = pmf( data, p, 'x' );
 
 		expected = [
 			{'x':NaN},

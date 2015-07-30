@@ -13,7 +13,7 @@ var // Expectation library:
 	isFiniteNumber = require( 'validate.io-finite' ),
 
 	// Module to be tested:
-	pdf = require( './../lib/matrix.js' );
+	pmf = require( './../lib/matrix.js' );
 
 // VARIABLES //
 
@@ -23,7 +23,7 @@ var expect = chai.expect,
 
 // TESTS //
 
-describe( 'matrix pdf', function tests() {
+describe( 'matrix pmf', function tests() {
 
 	var validationData = require( './fixtures/matrix.json' ),
 		p = validationData.p,
@@ -43,21 +43,21 @@ describe( 'matrix pdf', function tests() {
 	});
 
 	it( 'should export a function', function test() {
-		expect( pdf ).to.be.a( 'function' );
+		expect( pmf ).to.be.a( 'function' );
 	});
 
 	it( 'should throw an error if provided unequal length matrices', function test() {
 		expect( badValues ).to.throw( Error );
 		function badValues() {
-			pdf( matrix( [10,10] ), mat, p );
+			pmf( matrix( [10,10] ), mat, p );
 		}
 	});
 
-	it( 'should evaluate the Geometric pdf for each matrix element', function test() {
+	it( 'should evaluate the Geometric pmf for each matrix element', function test() {
 		var actual, i;
 
 		actual = matrix( [5,5], 'float64' );
-		actual = pdf( actual, mat, p );
+		actual = pmf( actual, mat, p );
 
 
 		for ( i = 0; i < actual.length; i++ ) {
@@ -74,13 +74,13 @@ describe( 'matrix pdf', function tests() {
 		expected = matrix( [0,0] ).data;
 
 		mat = matrix( [0,10] );
-		assert.deepEqual( pdf( out, mat, p ).data, expected );
+		assert.deepEqual( pmf( out, mat, p ).data, expected );
 
 		mat = matrix( [10,0] );
-		assert.deepEqual( pdf( out, mat, p ).data, expected );
+		assert.deepEqual( pmf( out, mat, p ).data, expected );
 
 		mat = matrix( [0,0] );
-		assert.deepEqual( pdf( out, mat, p ).data, expected );
+		assert.deepEqual( pmf( out, mat, p ).data, expected );
 	});
 
 });

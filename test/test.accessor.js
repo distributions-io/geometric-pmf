@@ -10,7 +10,7 @@ var // Expectation library:
 	isFiniteNumber = require( 'validate.io-finite' ),
 
 	// Module to be tested:
-	pdf = require( './../lib/accessor.js' );
+	pmf = require( './../lib/accessor.js' );
 
 
 // VARIABLES //
@@ -21,16 +21,16 @@ var expect = chai.expect,
 
 // TESTS //
 
-describe( 'accessor pdf', function tests() {
+describe( 'accessor pmf', function tests() {
 
 	var validationData = require( './fixtures/accessor.json' ),
 		p = validationData.p;
 
 	it( 'should export a function', function test() {
-		expect( pdf ).to.be.a( 'function' );
+		expect( pmf ).to.be.a( 'function' );
 	});
 
-	it( 'should evaluate the Geometric pdf using an accessor', function test() {
+	it( 'should evaluate the Geometric pmf using an accessor', function test() {
 		var data, actual, expected, i;
 
 		data = validationData.data.map( function( e ) {
@@ -38,7 +38,7 @@ describe( 'accessor pdf', function tests() {
 		});
 		actual = new Array( data.length );
 
-		actual = pdf( actual, data, p,getValue );
+		actual = pmf( actual, data, p,getValue );
 
 		expected = validationData.expected.map( function( d ) {
 			return d === 'Inf' ? Infinity : d;
@@ -57,7 +57,7 @@ describe( 'accessor pdf', function tests() {
 	});
 
 	it( 'should return an empty array if provided an empty array', function test() {
-		assert.deepEqual( pdf( [], [], getValue ), [] );
+		assert.deepEqual( pmf( [], [], getValue ), [] );
 		function getValue( d ) {
 			return d.x;
 		}
@@ -73,7 +73,7 @@ describe( 'accessor pdf', function tests() {
 			{'x':{}}
 		];
 		actual = new Array( data.length );
-		actual = pdf( actual, data, p, getValue );
+		actual = pmf( actual, data, p, getValue );
 
 		expected = [ NaN, NaN, NaN, NaN ];
 

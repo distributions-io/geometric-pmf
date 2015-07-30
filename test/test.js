@@ -16,7 +16,7 @@ var // Expectation library:
 	isnan = require( 'validate.io-nan' ),
 
 	// Module to be tested:
-	pdf = require( './../lib' );
+	pmf = require( './../lib' );
 
 
 // VARIABLES //
@@ -27,10 +27,10 @@ var expect = chai.expect,
 
 // TESTS //
 
-describe( 'distributions-geometric-pdf', function tests() {
+describe( 'distributions-geometric-pmf', function tests() {
 
 	it( 'should export a function', function test() {
-		expect( pdf ).to.be.a( 'function' );
+		expect( pmf ).to.be.a( 'function' );
 	});
 
 	it( 'should throw an error if provided an invalid option', function test() {
@@ -50,7 +50,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 		}
 		function badValue( value ) {
 			return function() {
-				pdf( [1,2,3], {
+				pmf( [1,2,3], {
 					'accessor': value
 				});
 			};
@@ -68,7 +68,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 		}
 		function badValue( value ) {
 			return function() {
-				pdf( [1,2,3], {
+				pmf( [1,2,3], {
 					'dtype': value
 				});
 			};
@@ -86,7 +86,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 		}
 		function badValue( value ) {
 			return function() {
-				pdf( new Int8Array([1,2,3]), {
+				pmf( new Int8Array([1,2,3]), {
 					'dtype': value
 				});
 			};
@@ -104,7 +104,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 		}
 		function badValue( value ) {
 			return function() {
-				pdf( matrix( [2,2] ), {
+				pmf( matrix( [2,2] ), {
 					'dtype': value
 				});
 			};
@@ -123,11 +123,11 @@ describe( 'distributions-geometric-pdf', function tests() {
 		];
 
 		for ( var i = 0; i < values.length; i++ ) {
-			assert.isTrue( isnan( pdf( values[ i ] ) ) );
+			assert.isTrue( isnan( pmf( values[ i ] ) ) );
 		}
 	});
 
-	it( 'should compute the Geometric pdf when provided a number', function test() {
+	it( 'should compute the Geometric pmf when provided a number', function test() {
 		var	validationData = require( './fixtures/number.json' ),
 			data = validationData.data,
 			expected = validationData.expected.map( function( d ) {
@@ -137,7 +137,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 
 			var actual;
 			for ( var i = 0; i < data.length; i++ ) {
-				actual =  pdf( data[ i ], {
+				actual =  pmf( data[ i ], {
 					'p': validationData.p
 				});
 				if ( isFiniteNumber( actual ) && isFiniteNumber( expected[ i ] ) ) {
@@ -146,7 +146,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 			}
 	});
 
-	it( 'should evaluate the Geometric pdf when provided a plain array', function test() {
+	it( 'should evaluate the Geometric pmf when provided a plain array', function test() {
 
 		var validationData = require( './fixtures/array.json' ),
 			data,
@@ -160,7 +160,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 			return d === 'Inf' ? Infinity : d;
 		});
 
-		actual = pdf( data, {
+		actual = pmf( data, {
 			'p': validationData.p
 		});
 		assert.notEqual( actual, data );
@@ -171,7 +171,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 			}
 		}
 		// Mutate...
-		actual = pdf( data, {
+		actual = pmf( data, {
 			'copy': false,
 			'p': validationData.p
 		});
@@ -184,7 +184,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 		}
 	});
 
-	it( 'should evaluate the Geometric pdf when provided a typed array', function test() {
+	it( 'should evaluate the Geometric pmf when provided a typed array', function test() {
 		var validationData = require( './fixtures/typedarray.json' ),
 			data,
 			actual,
@@ -197,7 +197,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 			return d === 'Inf' ? Infinity : d;
 		}) );
 
-		actual = pdf( data, {
+		actual = pmf( data, {
 			'p': validationData.p
 		});
 		assert.notEqual( actual, data );
@@ -209,7 +209,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 		}
 
 		// Mutate:
-		actual = pdf( data, {
+		actual = pmf( data, {
 			'copy': false,
 			'p': validationData.p
 		});
@@ -225,7 +225,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 		}
 	});
 
-	it( 'should evaluate the Geometric pdf element-wise and return an array of a specific type', function test() {
+	it( 'should evaluate the Geometric pmf element-wise and return an array of a specific type', function test() {
 
 		var validationData = require( './fixtures/array.json' ),
 			// make copy of data array to prevent mutation of validationData
@@ -238,7 +238,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 			return d === 'Inf' ? Infinity : d;
 		}) );
 
-		actual = pdf( data, {
+		actual = pmf( data, {
 			'dtype': 'float32',
 			'p': validationData.p
 		});
@@ -253,7 +253,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 		}
 	});
 
-	it( 'should evaluate the Geometric pdf element-wise using an accessor', function test() {
+	it( 'should evaluate the Geometric pmf element-wise using an accessor', function test() {
 		var validationData = require( './fixtures/accessor.json' ),
 			data,
 			actual,
@@ -268,7 +268,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 			return d === 'Inf' ? Infinity : d;
 		});
 
-		actual = pdf( data, {
+		actual = pmf( data, {
 			'accessor': getValue,
 			'p': validationData.p
 		});
@@ -281,7 +281,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 		}
 
 		// Mutate:
-		actual = pdf( data, {
+		actual = pmf( data, {
 			'accessor': getValue,
 			'copy': false,
 			'p': validationData.p
@@ -299,7 +299,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 		}
 	});
 
-	it( 'should evaluate the Geometric pdf element-wise and deep set', function test() {
+	it( 'should evaluate the Geometric pmf element-wise and deep set', function test() {
 		var validationData = require( './fixtures/deepset.json' ),
 				data,
 				actual,
@@ -310,7 +310,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 			return {'x': [ i, e ]};
 		});
 
-		actual = pdf( data, {
+		actual = pmf( data, {
 			'path': 'x.1',
 			'p': validationData.p
 		});
@@ -335,7 +335,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 		data = validationData.data.map( function( e ) {
 			return {'x': [ i, e ]};
 		});
-		actual = pdf( data, {
+		actual = pmf( data, {
 			'path': 'x/1',
 			'sep': '/',
 			'p': validationData.p
@@ -349,7 +349,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 		}
 	});
 
-	it( 'should evaluate the Geometric pdf element-wise when provided a matrix', function test() {
+	it( 'should evaluate the Geometric pmf element-wise when provided a matrix', function test() {
 		var validationData = require( './fixtures/matrix.json' ),
 			mat,
 			out,
@@ -363,7 +363,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 		}) );
 
 		mat = matrix( d1, [5,5], 'float64' );
-		out = pdf( mat, {
+		out = pmf( mat, {
 			'p': validationData.p
 		});
 
@@ -374,7 +374,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 		}
 
 		// Mutate...
-		out = pdf( mat, {
+		out = pmf( mat, {
 			'copy': false,
 			'p': validationData.p
 		});
@@ -387,7 +387,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 		}
 	});
 
-	it( 'should evaluate the Geometric pdf element-wise and return a matrix of a specific type', function test() {
+	it( 'should evaluate the Geometric pmf element-wise and return a matrix of a specific type', function test() {
 		var validationData = require( './fixtures/matrix.json' ),
 			mat,
 			out,
@@ -399,7 +399,7 @@ describe( 'distributions-geometric-pdf', function tests() {
 		d2 = new Float32Array( validationData.expected );
 
 		mat = matrix( d1, [5,5], 'float64' );
-		out = pdf( mat, {
+		out = pmf( mat, {
 			'dtype': 'float32',
 			'p': validationData.p
 		});
@@ -414,9 +414,9 @@ describe( 'distributions-geometric-pdf', function tests() {
 	});
 
 	it( 'should return an empty data structure if provided an empty data structure', function test() {
-		assert.deepEqual( pdf( [] ), [] );
-		assert.deepEqual( pdf( matrix( [0,0] ) ).data, new Float64Array() );
-		assert.deepEqual( pdf( new Int8Array() ), new Float64Array() );
+		assert.deepEqual( pmf( [] ), [] );
+		assert.deepEqual( pmf( matrix( [0,0] ) ).data, new Float64Array() );
+		assert.deepEqual( pmf( new Int8Array() ), new Float64Array() );
 	});
 
 });

@@ -1,13 +1,13 @@
-Probability Density Function
+Probability Mass Function
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][codecov-image]][codecov-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution probability density function (PDF).
+> [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution probability mass function (PMF).
 
 The [probability mass function](https://en.wikipedia.org/wiki/Probability_mass_function) (PMF) for a [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) random variable is
 
-<div class="equation" align="center" data-raw-text="" data-equation="eq:pmf_function">
-	<img src="" alt="Probability mass function (PMF) for a Geometric distribution.">
+<div class="equation" align="center" data-raw-text="\Pr(X = x) = (1-p)^{x-1}\,p" data-equation="eq:pmf_function">
+	<img src="https://cdn.rawgit.com/distributions-io/geometric-pmf/37ccd186931eced84e063e0b7ab2d7d5d822f998/docs/img/eqn.svg" alt="Probability mass function (PMF) for a Geometric distribution.">
 	<br>
 </div>
 
@@ -40,7 +40,7 @@ var matrix = require( 'dstructs-matrix' ),
 	i;
 
 out = pmf( 1 );
-// returns
+// returns 0.25
 
 out = pmf( -1 );
 // returns 0
@@ -50,11 +50,11 @@ out = pmf( 0.5 );
 
 x = [ 0, 1, 2, 3, 4, 5 ];
 out = pmf( x );
-// returns [...]
+// returns [ 0.5, 0.25, 0.125, 0.0625, 0.0312, 0.0156 ]
 
 x = new Int8Array( x );
 out = pmf( x );
-// returns Float64Array( [...] )
+// returns Float64Array( [0.5,0.25,0.125,0.0625,0.0312,0.0156] )
 
 x = new Float32Array( 6 );
 for ( i = 0; i < 6; i++ ) {
@@ -69,9 +69,9 @@ mat = matrix( x, [3,2], 'float32' );
 
 out = pmf( mat );
 /*
-	[
-
-	   ]
+	[ 0.5    0.25
+	  0.125  0.0625
+	  0.0312 0.0156 ]
 */
 ```
 
@@ -90,9 +90,9 @@ A [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution
 var x = [ 0, 1, 2, 3, 4, 5 ];
 
 var out = pmf( x, {
-	'p': 9
+	'p': 0.1
 });
-// returns [...]
+// returns [ 0.1, 0.09, 0.081, 0.0729, 0.0656, 0.059 ]
 ```
 
 For non-numeric `arrays`, provide an accessor `function` for accessing `array` values.
@@ -114,7 +114,7 @@ function getValue( d, i ) {
 var out = pmf( data, {
 	'accessor': getValue
 });
-// returns [...]
+// returns [ 0.5, 0.25, 0.125, 0.0625, 0.0312, 0.0156 ]
 ```
 
 
@@ -136,12 +136,12 @@ var out = pmf( data, {
 });
 /*
 	[
-		{'x':[0,]},
-		{'x':[1,]},
-		{'x':[2,]},
-		{'x':[3,]},
-		{'x':[4,]},
-		{'x':[5,]}
+		{'x':[0,0.5]},
+		{'x':[1,0.25]},
+		{'x':[2,0.125]},
+		{'x':[3,0.0625]},
+		{'x':[4,0.0312]},
+		{'x':[5,0.0156]}
 	]
 */
 
@@ -159,13 +159,13 @@ x = new Int8Array( [0,1,2,3,4] );
 out = pmf( x, {
 	'dtype': 'float32'
 });
-// returns Float32Array( [...] )
+// returns Float32Array( [0.5,0.25,0.125,0.0625,0.0312] )
 
 // Works for plain arrays, as well...
 out = pmf( [0,1,2,3,4], {
 	'dtype': 'float32'
 });
-// returns Float32Array( [...] )
+// returns Float32Array( [0.5,0.25,0.125,0.0625,0.0312] )
 ```
 
 By default, the function returns a new data structure. To mutate the input data structure (e.g., when input values can be discarded or when optimizing memory usage), set the `copy` option to `false`.
@@ -182,7 +182,7 @@ x = [ 0, 1, 2, 3, 4, 5 ];
 out = pmf( x, {
 	'copy': false
 });
-// returns [...]
+// returns [ 0.5, 0.25, 0.125, 0.0625, 0.0312, 0.0156 ]
 
 bool = ( x === out );
 // returns true
@@ -202,9 +202,9 @@ out = pmf( mat, {
 	'copy': false
 });
 /*
-	[
-
-	   ]
+	[ 0.5    0.25
+	  0.125  0.0625
+	  0.0312 0.0156 ]
 */
 
 bool = ( mat === out );

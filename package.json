@@ -28,7 +28,8 @@
     "probability",
     "statistics",
     "stats",
-    "pdf"
+    "pmf",
+    "discrete distribution"
   ],
   "bugs": {
     "url": "https://github.com/compute-io/geometric-pmf/issues"

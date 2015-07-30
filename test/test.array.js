@@ -10,7 +10,7 @@ var // Expectation library:
 	isFiniteNumber = require( 'validate.io-finite' ),
 
 	// Module to be tested:
-	pdf = require( './../lib/array.js' );
+	pmf = require( './../lib/array.js' );
 
 
 // VARIABLES //
@@ -21,23 +21,23 @@ var expect = chai.expect,
 
 // TESTS //
 
-describe( 'array pdf', function tests() {
+describe( 'array pmf', function tests() {
 
 	var validationData = require( './fixtures/array.json' ),
 		p = validationData.p;
 
 	it( 'should export a function', function test() {
-		expect( pdf ).to.be.a( 'function' );
+		expect( pmf ).to.be.a( 'function' );
 	});
 
-	it( 'should evaluate the Geometric pdf', function test() {
+	it( 'should evaluate the Geometric pmf', function test() {
 		var data, actual, expected, i;
 
 		data = validationData.data;
 
 		actual = new Array( data.length );
 
-		actual = pdf( actual, data, p );
+		actual = pmf( actual, data, p );
 
 		expected = validationData.expected.map( function( d ) {
 			return d === 'Inf' ? Infinity : d;
@@ -51,7 +51,7 @@ describe( 'array pdf', function tests() {
 	});
 
 	it( 'should return an empty array if provided an empty array', function test() {
-		assert.deepEqual( pdf( [], [], p ), [] );
+		assert.deepEqual( pmf( [], [], p ), [] );
 	});
 
 	it( 'should handle non-numeric values by setting the element to NaN', function test() {
@@ -59,7 +59,7 @@ describe( 'array pdf', function tests() {
 
 		data = [ true, null, [], {} ];
 		actual = new Array( data.length );
-		actual = pdf( actual, data, p );
+		actual = pmf( actual, data, p );
 
 		expected = [ NaN, NaN, NaN, NaN ];
 

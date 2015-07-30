@@ -10,10 +10,10 @@ var // Expectation library:
 	isFiniteNumber = require( 'validate.io-finite' ),
 
 	// Check whether an element is `NaN`
-	isnan = require( 'validate.io-nan' ),	
+	isnan = require( 'validate.io-nan' ),
 
 	// Module to be tested:
-	pdf = require( './../lib/number.js' );
+	pmf = require( './../lib/number.js' );
 
 
 // VARIABLES //
@@ -24,7 +24,7 @@ var expect = chai.expect,
 
 // TESTS //
 
-describe( 'number pdf', function tests() {
+describe( 'number pmf', function tests() {
 
 	var	validationData = require( './fixtures/number.json' ),
 		data = validationData.data,
@@ -34,13 +34,13 @@ describe( 'number pdf', function tests() {
 		p = validationData.p;
 
 	it( 'should export a function', function test() {
-		expect( pdf ).to.be.a( 'function' );
+		expect( pmf ).to.be.a( 'function' );
 	});
 
-	it( 'should evaluate the Geometric probability density function', function test() {
+	it( 'should evaluate the Geometric probability mass function', function test() {
 		var actual;
 		for ( var i = 0; i < data.length; i++ ) {
-			actual =  pdf( data[ i ], p );
+			actual =  pmf( data[ i ], p );
 			if ( isFiniteNumber( actual ) && isFiniteNumber( expected[ i ] ) ) {
 				assert.closeTo( actual, expected[ i ] , 1e-14 );
 			}
@@ -48,7 +48,7 @@ describe( 'number pdf', function tests() {
 	});
 
 	it( 'should return `NaN` if provided `NaN` as input', function test() {
-		assert.isTrue( isnan( pdf( NaN, p ) ) );
+		assert.isTrue( isnan( pmf( NaN, p ) ) );
 	});
 
 });
