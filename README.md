@@ -7,7 +7,7 @@ Probability Mass Function
 The [probability mass function](https://en.wikipedia.org/wiki/Probability_mass_function) (PMF) for a [geometric](https://en.wikipedia.org/wiki/Geometric_distribution) random variable is
 
 <div class="equation" align="center" data-raw-text="\Pr(X = x) = \begin{cases}(1-p)^{x}\,p &amp; \text{ for } x=0,1,2,\ldots \\ 0 &amp; \text{ otherwise } \end{cases}" data-equation="eq:pmf_function">
-	<img src="https://cdn.rawgit.com/distributions-io/geometric-pmf/37ccd186931eced84e063e0b7ab2d7d5d822f998/docs/img/eqn.svg" alt="Probability mass function (PMF) for a geometric distribution.">
+	<img src="https://cdn.rawgit.com/distributions-io/geometric-pmf/978944d1fa1df4bf9bb38eea3ec43eea3b0debd7/docs/img/eqn.svg" alt="Probability mass function (PMF) for a geometric distribution.">
 	<br>
 </div>
 
