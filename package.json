@@ -20,7 +20,7 @@
   "main": "./lib",
   "repository": {
     "type": "git",
-    "url": "git://github.com/compute-io/geometric-pmf.git"
+    "url": "git://github.com/distributions-io/geometric-pmf.git"
   },
   "keywords": [
     "distributions.io",
@@ -32,7 +32,7 @@
     "discrete distribution"
   ],
   "bugs": {
-    "url": "https://github.com/compute-io/geometric-pmf/issues"
+    "url": "https://github.com/distributions-io/geometric-pmf/issues"
   },
   "dependencies": {
     "compute-array-constructors": "^1.0.0",

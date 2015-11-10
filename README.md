@@ -4,14 +4,14 @@ Probability Mass Function
 
 > [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution probability mass function (PMF).
 
-The [probability mass function](https://en.wikipedia.org/wiki/Probability_mass_function) (PMF) for a [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) random variable is
+The [probability mass function](https://en.wikipedia.org/wiki/Probability_mass_function) (PMF) for a [geometric](https://en.wikipedia.org/wiki/Geometric_distribution) random variable is
 
-<div class="equation" align="center" data-raw-text="\Pr(X = x) = (1-p)^{x-1}\,p" data-equation="eq:pmf_function">
-	<img src="https://cdn.rawgit.com/distributions-io/geometric-pmf/37ccd186931eced84e063e0b7ab2d7d5d822f998/docs/img/eqn.svg" alt="Probability mass function (PMF) for a Geometric distribution.">
+<div class="equation" align="center" data-raw-text="\Pr(X = x) = \begin{cases}(1-p)^{x}\,p &amp; \text{ for } x=0,1,2,\ldots \\ 0 &amp; \text{ otherwise } \end{cases}" data-equation="eq:pmf_function">
+	<img src="https://cdn.rawgit.com/distributions-io/geometric-pmf/37ccd186931eced84e063e0b7ab2d7d5d822f998/docs/img/eqn.svg" alt="Probability mass function (PMF) for a geometric distribution.">
 	<br>
 </div>
 
-where `p` is the success probability.
+where `p` is the success probability. The random variable `X` denotes the number of failures until the first success in a sequence of independent Bernoulli trials.
 
 ## Installation
 

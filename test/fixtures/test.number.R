@@ -4,7 +4,7 @@ library( jsonlite )
 
 p = 0.43
 x = c( -2, 0, 2.5, 5 )
-y = dgeom( x, p )
+y = dgeom( x + 1, p )
 
 cat( y, sep = ",\n" )
 
