@@ -30,7 +30,7 @@ var pmf = require( 'distributions-geometric-pmf' );
 
 #### pmf( x[, options] )
 
-Evaluates the [probability mass function](https://en.wikipedia.org/wiki/Probability_mass_function) (PMF) for the [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution. `x` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
+Evaluates the [probability mass function](https://en.wikipedia.org/wiki/Probability_mass_function) (PMF) for the [geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution. `x` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
 
 ``` javascript
 var matrix = require( 'dstructs-matrix' ),
@@ -84,7 +84,7 @@ The function accepts the following `options`:
 *	__path__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path.
 *	__sep__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path separator. Default: `'.'`.
 
-A [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution is a function of 1 parameter(s): `p`(success probability). By default, `p` is equal to `0.5`. To adjust either parameter, set the corresponding option.
+A [geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution is a function of one parameter: `p`(success probability). By default, `p` is equal to `0.5`. To adjust it, set the corresponding option.
 
 ``` javascript
 var x = [ 0, 1, 2, 3, 4, 5 ];
